@@ -1,0 +1,81 @@
+<!--
+Copyright (c) 2020 Cisco and/or its affiliates.
+
+This software is licensed to you under the terms of the Cisco Sample
+Code License, Version 1.1 (the "License"). You may obtain a copy of the
+License at
+
+               https://developer.cisco.com/docs/licenses
+
+All use of the material herein must be in accordance with the terms of
+the License. All rights not expressly granted by the License are
+reserved. Unless required by applicable law or agreed to separately in
+writing, software distributed under the License is distributed on an "AS
+IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied.
+--!>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="locale" content="US">
+        <meta name="language" content="en">
+        <meta name="country" content="US">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Uplink Loss and Latency</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/cui-standard.min.css') }}">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="//www.cisco.com/favicon.ico">
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="///www.cisco.com/favicon.ico">
+    </head>
+    <body class="cui cui--wide">
+        <div class="content-fluid">
+            <main>
+                <div class="content">
+                    <div class="container">
+                    <div class="row base-margin-bottom">
+                        <div class="col-4">
+                        </div>
+                        <div style="margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width=300px;">
+                            <div class="text-center">
+                                <div class="panel panel--loose panel--raised base-margin-bottom" style="padding: 50px;" >
+                                    <img class="image-horizontal-size-128" src="{{ url_for('static', filename='img/branding.png') }}">
+                                    <h1> </h1>
+                                    <h3>Uplinks Loss and Latency</h3>
+                                    <table class="table table--lined table--selectable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Network ID</span></th>
+                                        <th class="text-center">Serial</span></th>
+                                        <th class="text-center">Uplink</span></th>
+                                        <th class="text-center">Destination IP</span></th>
+                                        <th class="text-center">Timestamp</span></th>
+                                        <th class="text-center">Loss (%)</span></th>
+                                        <th class="text-center">Latency (ms)</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for network in statistics %}
+                                        <tr>
+                                            <td class="text-center">{{ statistics.networkId }}</span></td>
+                                            <td class="text-center">{{ statistics.serial }}</span></td>
+                                            <td class="text-center">{{ statistics.uplink }}</span></td>
+                                            <td class="text-center">{{ statistics.ip }}</span></td>
+                                            <td class="text-center">{{ statistics.timeSeries.0.ts }}</span></td>
+                                            <td class="text-center">{{ statistics.timeSeries.0.lossPercent }}</span></td>
+                                            <td class="text-center">{{ statistics.timeSeries.0.latencyMs }}</span></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
