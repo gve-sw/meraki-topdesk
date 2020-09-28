@@ -21,15 +21,40 @@ This is the Meraki TopDesk Cloud Integration source code. Using Meraki Webhooks 
 $ git clone https://github.com/gve-sw/meraki-topdesk.git
 ```
 
+##### Install virtualenv via pip
+```
+$ pip install virtualenv
+```
+
+##### Create a new venv
+```
+Change to your project folder
+$ cd meraki-topdesk
+
+Create the venv
+$ virtualenv venv
+
+Activate your venv
+$ source venv/bin/activate
+```
+
 #### Install dependencies
 ```
-$ pip3 install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## Setup:
 #### Meraki details :
 You can deploy this prototype in a lab environment or on your own Meraki dashboard online [here](https://account.meraki.com/secure/login/dashboard_login).
 You need to have a TopDesk App Password and your TopDesk Deployment URL (replace localhost). You may check [here](https://developers.topdesk.com/tutorial.html#show-collapse-usage-createAppPassword) for more info. 
+
+To generate an API KEY, refer to the documentation [here](https://documentation.meraki.com/zGeneral_Administration/Other_Topics/The_Cisco_Meraki_Dashboard_API#Enable_API_access).
+You will use this for getting an ORGANIZATION ID, and using this application.
+
+You must select an organization to manage and use its ORGANIZATION ID. You may do so by using Meraki's Postman collection
+[here](https://documenter.getpostman.com/view/7928889/SVmsVg6K#18e62fd9-402a-4768-ab5e-f11a44651cfe) and GET the list of organizations,
+or use Meraki's API Docs to generate a request [here](https://developer.cisco.com/meraki/api-v1/#!get-organizations).
+
 Fill in the details of your Meraki deployment and TopDesk Cloud in the [DETAILS.py](DETAILS.py) file
 ```python
 MERAKI_API_KEY = 'Your API Key'
@@ -54,7 +79,8 @@ $ ngrok http 5000
 ```
 
 You may also use AWS Lambda and Zappa to host the server. You may refer to [zappa_settings](zappa_settings.json)
-for a sample config.
+for a sample config, and [here](https://pythonforundergradengineers.com/deploy-serverless-web-app-aws-lambda-zappa.html) for a
+quick guide on using them.
 
 Setup your Meraki Dashboard settings using this [guide](https://developer.cisco.com/meraki/webhooks/#!introduction/overview)
 and use the https endpoint provided by ngrok. TopDesk should now be creating incidents for every alert webhook received.
