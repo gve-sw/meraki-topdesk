@@ -60,10 +60,29 @@ Fill in the details of your Meraki deployment and TopDesk Cloud in the [DETAILS.
 MERAKI_API_KEY = 'Your API Key'
 MERAKI_ORGANIZATION_ID = 'Your Organization ID'
 
+#Generic TOPdesk settings
 TOPDESK_USERNAME = 'Your Username'
 TOPDESK_PASSWORD = 'Your App Password'
 TOPDESK_URL = 'http://localhost/tas/api/incidents'
+TOPDESK_CALLER_ID = 'Unique ID of the default caller for new calls'
+TOPDEK_CALLTYPE_NAME = 'Call type for new calls'
+TOPDEK_ENTRYTYPE_NAME = 'Entry type'
 
+#Settings per alert type
+#Alerttype: APs went down
+TOPDESK_AP_CATEGORY_NAME = 'Netzwerk'
+TOPDESK_AP_SUBCATEGORY_NAME = 'WLAN Filialen Meraki'
+#Alerttype: Network usage alert
+TOPDESK_NETWORK_CATEGORY_NAME = 'Netzwerk'
+TOPDESK_NETWORK_SUBCATEGORY_NAME = 'Firewall Meraki'
+#Alerttype: Settings changed
+TOPDESK_SETTINGS_CATEGORY_NAME = 'Netzwerk'
+TOPDESK_SETTINGS_SUBCATEGORY_NAME = 'LAN Filialen Meraki'
+#Alerttype: VPN connectivity changed (to not connected)
+TOPDESK_VPN_CATEGORY_NAME = 'Netzwerk'
+TOPDESK_VPN_SUBCATEGORY_NAME = 'VPN'
+#Other alert types
+TOPDESK_GENERAL_CATEGORY_NAME = 'Netzwerk'
 ```
 
 ## Usage:

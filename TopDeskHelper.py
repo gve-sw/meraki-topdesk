@@ -22,6 +22,7 @@ __license__ = "Cisco Sample Code License, Version 1.1"
 
 
 import requests
+from app import app
 import json
 import pprint
 
@@ -39,20 +40,20 @@ def alert_handler(alert):
             "request": "Please check {}".format(json.dumps(alert['deviceUrl'], indent=4)),
             "action": "An AP went down. You may view the device on Meraki Dashboard using the URL provided. \
              Refer to the below alert message for more information.\n{}".format(json.dumps(alert, indent=4)),
-            "caller": {
-              "id": "127ab07d-87cd-5db6-b3ae-ae1f45cfefa6"
+            "callerLookup": {
+              "id": app.config['TOPDESK_CALLER_ID']
             },
             "category": {
-                "name": "Netzwerk"
+                "name": app.config['TOPDESK_AP_CATEGORY_NAME']
             },
             "subcategory": {
-                "name": "WLAN Filialen Meraki"
+                "name": app.config['TOPDESK_AP_SUBCATEGORY_NAME']
             },
             "callType": {
-                "id": "ced12f77-a7d5-5207-8622-2c8ce8852b9e"
+                "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": "f8e153d0-08e4-5982-b53e-be4d8865247e"
+                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     # network usage
@@ -63,21 +64,20 @@ def alert_handler(alert):
             "action": "A Network is over the usage threshold. You may view the network on Meraki Dashboard using the \
                       URL provided. Refer to the below alert message for more information.\n{} \
                       ".format(json.dumps(alert, indent=4)),
-            "caller": {
-              "id": "127ab07d-87cd-5db6-b3ae-ae1f45cfefa6"
+            "callerLookup": {
+              "id": app.config['TOPDESK_CALLER_ID']
             },
             "category": {
-                "name": "Netzwerk"
+                "name": app.config['TOPDESK_NETWORK_CATEGORY_NAME']
             },
             "subcategory": {
-                "name": "Firewall Meraki"
+                "name": app.config['TOPDESK_NETWORK_SUBCATEGORY_NAME']
             },
             "callType": {
-                "id": "ced12f77-a7d5-5207-8622-2c8ce8852b9e",
-                "name": "9 - Monitoring - Alert"
+                "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": "f8e153d0-08e4-5982-b53e-be4d8865247e"
+                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     # settings changed
@@ -88,21 +88,20 @@ def alert_handler(alert):
             "action": "A Configuration change has occurred. You may view the network on Meraki Dashboard using the \
                       URL provided. Refer to the below alert message for more information.\n{} \
                       ".format(json.dumps(alert, indent=4)),
-            "caller": {
-              "id": "127ab07d-87cd-5db6-b3ae-ae1f45cfefa6"
+            "callerLookup": {
+              "id": app.config['TOPDESK_CALLER_ID']
             },
             "category": {
-                "name": "Netzwerk"
+                "name": app.config['TOPDESK_SETTINGS_CATEGORY_NAME']
             },
             "subcategory": {
-                "name": "LAN Filialen Meraki"
+                "name": app.config['TOPDESK_SETTINGS_SUBCATEGORY_NAME']
             },
             "callType": {
-                "id": "ced12f77-a7d5-5207-8622-2c8ce8852b9e",
-                "name": "9 - Monitoring - Alert"
+                "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": "f8e153d0-08e4-5982-b53e-be4d8865247e"
+                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     # VPN Connectivity
@@ -116,21 +115,20 @@ def alert_handler(alert):
                 "action": "VPN Connectivity went down. You may view the network on Meraki Dashboard using the \
                       URL provided. Refer to the below alert message for more information.\n{} \
                       ".format(json.dumps(alert, indent=4)),
-                "caller": {
-                  "id": "127ab07d-87cd-5db6-b3ae-ae1f45cfefa6"
+                "callerLookup": {
+                  "id": app.config['TOPDESK_CALLER_ID']
                 },
                 "category": {
-                    "name": "Netzwerk"
+                    "name": app.config['TOPDESK_VPN_CATEGORY_NAME']
                 },
                 "subcategory": {
-                    "name": "VPN"
+                    "name": app.config['TOPDESK_VPN_SUBCATEGORY_NAME']
                 },
                 "callType": {
-                    "id": "ced12f77-a7d5-5207-8622-2c8ce8852b9e",
-                    "name": "9 - Monitoring - Alert"
+                    "name": app.config['TOPDEK_CALLTYPE_NAME']
                 },
                 "entryType": {
-                    "id": "f8e153d0-08e4-5982-b53e-be4d8865247e"
+                    "id": app.config['TOPDEK_ENTRYTYPE_NAME']
                 }
             }
     # Generic Alert
@@ -141,18 +139,17 @@ def alert_handler(alert):
             "action": "{} alert has occurred. You may view the network on Meraki Dashboard using the \
                               URL provided. Refer to the below alert message for more information.\n{} \
                               ".format(json.dumps(alert['alertType'], indent=4), json.dumps(alert, indent=4)),
-            "caller": {
-                "id": "127ab07d-87cd-5db6-b3ae-ae1f45cfefa6"
+            "callerLookup": {
+              "id": app.config['TOPDESK_CALLER_ID']
             },
             "category": {
-                "name": "Netzwerk"
+                "name": app.config['TOPDESK_GENERAL_CATEGORY_NAME']
             },
             "callType": {
-                "id": "ced12f77-a7d5-5207-8622-2c8ce8852b9e",
-                "name": "9 - Monitoring - Alert"
+                "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": "f8e153d0-08e4-5982-b53e-be4d8865247e"
+                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     return payload
