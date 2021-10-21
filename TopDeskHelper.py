@@ -53,7 +53,7 @@ def alert_handler(alert):
                 "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
+                "name": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     # network usage
@@ -77,7 +77,7 @@ def alert_handler(alert):
                 "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
+                "name": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     # settings changed
@@ -101,7 +101,7 @@ def alert_handler(alert):
                 "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
+                "name": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     # VPN Connectivity
@@ -128,7 +128,7 @@ def alert_handler(alert):
                     "name": app.config['TOPDEK_CALLTYPE_NAME']
                 },
                 "entryType": {
-                    "id": app.config['TOPDEK_ENTRYTYPE_NAME']
+                    "name": app.config['TOPDEK_ENTRYTYPE_NAME']
                 }
             }
     # Generic Alert
@@ -149,7 +149,7 @@ def alert_handler(alert):
                 "name": app.config['TOPDEK_CALLTYPE_NAME']
             },
             "entryType": {
-                "id": app.config['TOPDEK_ENTRYTYPE_NAME']
+                "name": app.config['TOPDEK_ENTRYTYPE_NAME']
             }
         }
     return payload
